@@ -2,12 +2,21 @@
 ## so that it does not have to be re-calculated each time. This can 
 ## improve performance as calculating the inverse can be expensive
 ## but the inverse of a matrix does not change.
+##
 ## The functions assume that the inverse of the matrix exists.
+##
+## Usage:
+## First, create a cached matrix using the createCacheMatrix function
+## then use it with the cacheSolve function to get the inverse of the 
+## matrix
 
 
 
 ## This function creates a special matrix object that is able to cache
-## the value of the inverse function
+## the value of the inverse function.
+##
+## Usage:
+## makeCacheMatrix(x) where x is a regular matrix
 
 makeCacheMatrix <- function(x = matrix()) {
     i <- NULL
@@ -37,8 +46,13 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This function takes a special matrix created using the makeCacheMatrix 
 ## function and returns the inverse of the matrix using the cached value
 ## if possible.
+##
 ## Additional parameters may be passed to the underlying solve function
 ## using the ... parameters
+##
+## Usage: 
+## cacheSolve(x, ...) where x is a cache matrix and ... are addition 
+## parameters for the solve function
 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
